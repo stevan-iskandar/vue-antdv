@@ -4,10 +4,6 @@
 
 <script>
 export default {
-  name: 'Export404',
-}
+  name: "Export404",
+};
 </script>
-
-<style>
-  /*  */
-</style>

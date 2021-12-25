@@ -21,8 +21,10 @@ const router = createRouter({
       component: LoginPage,
     },
     {
-      path: '/:error404(.*)',
+      name: 'error404',
+      path: '/:error404(.*)*',
       meta: { needAuth: true },
+      props: true,
       component: Error404,
     },
   ],

@@ -1,30 +1,18 @@
 <template>
-  <AdminLayout v-if="auth.isLoggedIn" />
+  <AdminLayout v-if="auth.status" />
   <AdminAuthLayout v-else />
 </template>
 
 <script>
-import AdminAuthLayout from './AdminAuthLayout.vue'
-import AdminLayout from './AdminLayout.vue'
+import AdminAuthLayout from "./AdminAuthLayout.vue";
+import AdminLayout from "./AdminLayout.vue";
 
 export default {
-  name: 'BaseLayout',
+  name: "BaseLayout",
   components: {
     AdminAuthLayout,
     AdminLayout,
   },
-  inject: ['auth'],
-  mounted() {
-    console.log(this.auth)
-  },
-  beforeRouteUpdate(to, from, next) {
-    console.log('update route')
-    console.log(to, from)
-    next()
-  },
-}
+  inject: ["auth"],
+};
 </script>
-
-<style>
-  /*  */
-</style>

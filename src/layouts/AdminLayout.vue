@@ -1,14 +1,23 @@
 <template>
-  <h1>Admin Layout</h1>
-  <router-view></router-view>
+  <a-layout :style="{ minHeight: '100vh' }">
+    <AdminLayoutSidebar />
+    <a-layout>
+      <a-layout-header></a-layout-header>
+      <a-layout-content>
+        <router-view></router-view>
+      </a-layout-content>
+      <a-layout-footer></a-layout-footer>
+    </a-layout>
+  </a-layout>
 </template>
 
 <script>
-export default {
-  name: 'AdminLayout',
-}
-</script>
+import AdminLayoutSidebar from "./AdminLayoutSidebar.vue";
 
-<style>
-  /*  */
-</style>
+export default {
+  name: "AdminLayout",
+  components: {
+    AdminLayoutSidebar,
+  },
+};
+</script>

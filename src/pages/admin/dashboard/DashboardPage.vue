@@ -5,11 +5,7 @@
 
 <script>
 export default {
-  name: 'DashboardPage',
-  inject: ['logout'],
-}
+  name: "DashboardPage",
+  inject: ["logout"],
+};
 </script>
-
-<style>
-  /*  */
-</style>
