@@ -1,16 +1,44 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <BaseLayout />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { isAuthenticated } from './helpers/auth'
+import $_route from './helpers/route'
+import BaseLayout from './layouts/BaseLayout.vue'
+import * as constStorage from './constants/constStorage'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    BaseLayout,
+  },
+  provide() {
+    return {
+      auth: this.auth,
+      login: this.login,
+      logout: this.logout,
+    }
+  },
+  data() {
+    return {
+      auth: {
+        isLoggedIn: isAuthenticated()
+      },
+    }
+  },
+  methods: {
+    login() {
+      this.auth.isLoggedIn = true
+      localStorage.setItem(constStorage.AUTH, JSON.stringify(true))
+      this.$router.push($_route('dashboard'))
+    },
+    logout() {
+      this.auth.isLoggedIn = false
+      localStorage.removeItem(constStorage.AUTH)
+      this.$router.push($_route('login'))
+    },
+  },
 }
 </script>
 
