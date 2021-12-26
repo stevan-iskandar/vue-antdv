@@ -1,7 +1,7 @@
 <template>
   <a-layout-content :style="style.layoutContent">
     <a-row :style="style.row" type="flex" justify="space-around" align="middle">
-      <a-col :style="style.col" :span="12">
+      <a-col :style="style.col" :lg="12" :xs="20">
         <router-view></router-view>
       </a-col>
     </a-row>
@@ -9,7 +9,7 @@
 </template>
 
 <script>
-const bgImage = require("./../assets/vue-js-bg.jpg");
+const bgImage = require("./../../assets/vue-js-bg.jpg");
 
 export default {
   name: "AdminAuthLayout",
@@ -32,6 +32,7 @@ export default {
           padding: "1rem",
           borderRadius: "10px",
           backgroundColor: "white",
+          maxWidth: "540px",
         },
       },
     };

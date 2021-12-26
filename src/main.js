@@ -1,10 +1,17 @@
 import 'ant-design-vue/dist/antd.css'
 import Antd from 'ant-design-vue'
 import { createApp } from 'vue'
+import store from './store/index'
 import router from './router'
 import App from './App.vue'
 
-createApp(App)
+const app = createApp(App)
+  .use(store)
   .use(Antd)
   .use(router)
-  .mount('#app')
+
+app.config.productionTip = false
+
+router.isReady().then(() => {
+  app.mount('#app')
+})

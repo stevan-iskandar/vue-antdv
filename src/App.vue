@@ -5,8 +5,9 @@
 <script>
 import { isAuthenticated } from "./helpers/auth";
 import $_route from "./helpers/route";
-import BaseLayout from "./layouts/BaseLayout.vue";
+import BaseLayout from "./components/layout/BaseLayout.vue";
 import * as constStorage from "./constants/constStorage";
+import * as constRoute from "./constants/constRoute";
 
 export default {
   name: "App",
@@ -31,12 +32,12 @@ export default {
     login() {
       this.auth.status = true;
       localStorage.setItem(constStorage.AUTH, JSON.stringify(this.auth));
-      this.$router.push($_route("dashboard"));
+      this.$router.push($_route(constRoute.DASHBOARD));
     },
     logout() {
       this.auth.status = false;
       localStorage.removeItem(constStorage.AUTH);
-      this.$router.push($_route("login"));
+      this.$router.push($_route(constRoute.LOGIN));
     },
   },
 };
