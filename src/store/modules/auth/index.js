@@ -1,13 +1,14 @@
 import getters from './getters'
 import mutations from './mutations'
 import actions from './actions'
+import * as constStorage from './../../../constants/constStorage'
 
 export default {
   namespaced: true,
   state() {
     return {
-      token: '',
-      status: false,
+      userId: '',
+      token: localStorage.getItem(constStorage.AUTH) || '',
     }
   },
   getters,

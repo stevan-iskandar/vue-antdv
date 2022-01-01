@@ -1,9 +1,10 @@
 <template>
-  <AdminLayout v-if="auth.status" />
+  <AdminLayout v-if="isAuthenticated" />
   <AdminAuthLayout v-else />
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import $_lazy from "./../../helpers/lazy";
 
 const AdminAuthLayout = $_lazy(() => import("./AdminAuthLayout.vue"));
@@ -15,6 +16,9 @@ export default {
     AdminAuthLayout,
     AdminLayout,
   },
-  inject: ["auth"],
+  // inject: ["auth"],
+  computed: {
+    ...mapGetters("auth", ["isAuthenticated"]),
+  },
 };
 </script>

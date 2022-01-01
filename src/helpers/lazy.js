@@ -1,7 +1,9 @@
 import { defineAsyncComponent as lazy } from 'vue'
 
-export default component => lazy({
+const $_lazy = component => lazy({
   loader: component,
   delay: 500,
   // loadingComponent: Loading,
 })
+
+export default $_lazy
