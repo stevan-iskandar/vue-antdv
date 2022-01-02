@@ -10,7 +10,7 @@
 
 <script>
 import { LoginOutlined } from "@ant-design/icons-vue";
-import BaseAuthCard from "./../../../components/Base/BaseAuthCard.vue";
+import BaseAuthCard from "@/components/base/BaseAuthCard.vue";
 
 export default {
   name: "LoginPage",

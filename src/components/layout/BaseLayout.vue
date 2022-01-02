@@ -5,7 +5,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import $_lazy from "./../../helpers/lazy";
+import $_lazy from "@/helpers/lazy";
 
 const AdminAuthLayout = $_lazy(() => import("./AdminAuthLayout.vue"));
 const AdminLayout = $_lazy(() => import("./AdminLayout.vue"));
@@ -16,7 +16,6 @@ export default {
     AdminAuthLayout,
     AdminLayout,
   },
-  // inject: ["auth"],
   computed: {
     ...mapGetters("auth", ["isAuthenticated"]),
   },

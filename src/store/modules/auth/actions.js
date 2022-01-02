@@ -1,7 +1,7 @@
-import router from './../../../router'
-import $_route from './../../../helpers/route'
-import * as constRoute from './../../../constants/constRoute'
-import * as constStorage from './../../../constants/constStorage'
+import router from '@/router'
+import $_route from '@/helpers/route'
+import * as constRoute from '@/constants/constRoute'
+import * as constStorage from '@/constants/constStorage'
 
 export default {
   async login(context, payload) {

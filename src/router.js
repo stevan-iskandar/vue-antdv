@@ -1,8 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import store from './store/index'
-import routes from './constants/routes'
-import $_route from './helpers/route'
-import * as constRoute from './constants/constRoute'
+import store from '@/store/index'
+import routes from '@/constants/routes'
+import $_route from '@/helpers/route'
+import * as constRoute from '@/constants/constRoute'
 
 const router = createRouter({
   history: createWebHistory(),

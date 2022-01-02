@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { ucWords } from "./../../../helpers/string";
+import { ucWords } from "@/helpers/string";
 
 export default {
   name: "Export404",

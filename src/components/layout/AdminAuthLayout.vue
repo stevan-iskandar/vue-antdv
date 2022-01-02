@@ -14,7 +14,7 @@
 </template>
 
 <script>
-const bgImage = require("./../../assets/vue-js-bg.jpg");
+const bgImage = require("@/assets/vue-js-bg.jpg");
 
 export default {
   name: "AdminAuthLayout",

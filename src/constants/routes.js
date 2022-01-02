@@ -1,8 +1,8 @@
 import * as constRoute from './constRoute'
 
-const DashboardPage = () => import('./../pages/admin/dashboard/DashboardPage.vue')
-const LoginPage = () => import('./../pages/admin/auth/LoginPage.vue')
-const Error404 = () => import('./../pages/admin/error/Error404.vue')
+const DashboardPage = () => import('@/pages/admin/dashboard/DashboardPage.vue')
+const LoginPage = () => import('@/pages/admin/auth/LoginPage.vue')
+const Error404 = () => import('@/pages/admin/error/Error404.vue')
 
 const routes = [
   {

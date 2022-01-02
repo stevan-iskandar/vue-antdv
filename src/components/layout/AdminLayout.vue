@@ -8,53 +8,17 @@
         theme="dark"
         mode="inline"
       >
-        <a-menu-item key="1">
-          <UserOutlined />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="2">
-          <VideoCameraOutlined />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="3">
-          <UploadOutlined />
-          <span>nav 3</span>
-        </a-menu-item>
-        <a-menu-item key="21">
-          <UserOutlined />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="22">
-          <VideoCameraOutlined />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="23">
-          <UploadOutlined />
-          <span>nav 3</span>
-        </a-menu-item>
-        <a-menu-item key="31">
-          <UserOutlined />
-          <span>nav 1</span>
-        </a-menu-item>
-        <a-menu-item key="32">
-          <VideoCameraOutlined />
-          <span>nav 2</span>
-        </a-menu-item>
-        <a-menu-item key="33">
-          <UploadOutlined />
-          <span>nav 3</span>
-        </a-menu-item>
         <a-menu-item key="42">
-          <template #icon>
+          <router-link to="/">
             <DesktopOutlined />
-          </template>
-          <span>Option 2</span>
+            <span>Option 2</span>
+          </router-link>
         </a-menu-item>
         <a-menu-item key="43">
-          <template #icon>
+          <router-link to="/asdasd">
             <InboxOutlined />
-          </template>
-          <span>Option 3</span>
+            <span>Option 3</span>
+          </router-link>
         </a-menu-item>
         <a-sub-menu key="sub1">
           <template #icon>
@@ -78,6 +42,7 @@
             <a-menu-item key="12">Option 12</a-menu-item>
           </a-sub-menu>
         </a-sub-menu>
+        <AdminSiderMenu :menus="siderMenu" />
       </a-menu>
     </a-layout-sider>
     <a-layout>
@@ -92,12 +57,19 @@
             <MenuFoldOutlined v-else class="trigger" @click="toggleCollapsed" />
           </a-col>
           <a-col :span="12" :style="{ textAlign: 'right', padding: '0 1rem' }">
-            <a-button type="default" @click="logout">Logout</a-button>
+            <a-space align="center" :size="10">
+              <AdminHeaderNotification />
+              <AdminHeaderAvatar />
+            </a-space>
           </a-col>
         </a-row>
       </a-layout-header>
       <a-layout-content :style="{ padding: '1rem 1rem 0' }">
-        <router-view></router-view>
+        <router-view v-slot="slotProps">
+          <transition name="route" mode="out-in">
+            <component :is="slotProps.Component"></component>
+          </transition>
+        </router-view>
       </a-layout-content>
       <a-layout-footer :style="{ textAlign: 'center' }">
         Ant Design ©2018 Created by Ant UED
@@ -108,50 +80,48 @@
 
 <script>
 import {
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
+  //
   DesktopOutlined,
   InboxOutlined,
   MailOutlined,
   AppstoreOutlined,
 } from "@ant-design/icons-vue";
-import { mapActions } from "vuex";
+import AdminSiderMenu from "@/components/ui/admin-sider/AdminSiderMenu.vue";
+import AdminHeaderNotification from "@/components/ui/admin-header/AdminHeaderNotification.vue";
+import AdminHeaderAvatar from "@/components/ui/admin-header/AdminHeaderAvatar.vue";
+import siderMenu from "@/constants/siderMenu";
 
 export default {
   name: "AdminLayout",
   components: {
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
     MenuUnfoldOutlined,
     MenuFoldOutlined,
+    //
     DesktopOutlined,
     InboxOutlined,
     MailOutlined,
     AppstoreOutlined,
+    //
+    AdminSiderMenu,
+    AdminHeaderNotification,
+    AdminHeaderAvatar,
   },
   data() {
     return {
+      siderMenu,
       collapsed: false,
       selectedKeys: ["5"],
       openKeys: ["sub1"],
-      preOpenKeys: ["sub1"],
     };
-  },
-  watch: {
-    openKeys(_newVal, oldVal) {
-      this.preOpenKeys = oldVal;
-    },
   },
   methods: {
     toggleCollapsed() {
+      const preOpenKeys = this.openKeys;
       this.collapsed = !this.collapsed;
-      this.openKeys = this.collapsed ? [] : this.preOpenKeys;
+      this.openKeys = this.collapsed ? [] : preOpenKeys;
     },
-    ...mapActions("auth", ["logout"]),
   },
 };
 </script>
@@ -173,5 +143,29 @@ export default {
   height: 32px;
   background: rgba(255, 255, 255, 0.3);
   margin: 16px;
+}
+
+.route-enter-from {
+  opacity: 0;
+  transform: translateY(-30px);
+}
+
+.route-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.route-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.route-leave-active {
+  transition: all 0.3s ease-in;
+}
+
+.route-enter-to,
+.route-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>

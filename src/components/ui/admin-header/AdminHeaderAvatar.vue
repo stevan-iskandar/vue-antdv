@@ -1,0 +1,50 @@
+<template>
+  <a-dropdown placement="bottomRight">
+    <span>
+      Admin
+      <a-avatar>
+        <template #icon><UserOutlined /></template>
+      </a-avatar>
+    </span>
+    <template #overlay>
+      <a-menu>
+        <a-menu-item>
+          <UserOutlined />
+          User
+        </a-menu-item>
+        <a-menu-divider></a-menu-divider>
+        <a-menu-item @click="logoutModalShow">
+          <LogoutOutlined />
+          Logout
+        </a-menu-item>
+      </a-menu>
+    </template>
+  </a-dropdown>
+  <a-modal v-model:visible="logoutModal" title="Logout" @ok="logout">
+    <p>Are you sure want to logout?</p>
+  </a-modal>
+</template>
+
+<script>
+import { UserOutlined, LogoutOutlined } from "@ant-design/icons-vue";
+import { mapActions } from "vuex";
+
+export default {
+  name: "AdminHeaderAvatar",
+  components: {
+    UserOutlined,
+    LogoutOutlined,
+  },
+  data() {
+    return {
+      logoutModal: false,
+    };
+  },
+  methods: {
+    ...mapActions("auth", ["logout"]),
+    logoutModalShow() {
+      this.logoutModal = true;
+    },
+  },
+};
+</script>
