@@ -7,12 +7,12 @@ const siderMenu = [
   {
     key: constRoute.DASHBOARD,
     title: 'Dashboard',
-    icon: <DesktopOutlined />,
+    icon: DesktopOutlined,
   },
   {
     key: 'parent1',
     title: 'Parent 1',
-    icon: <DesktopOutlined />,
+    icon: DesktopOutlined,
     children: [
       {
         key: 'child1',

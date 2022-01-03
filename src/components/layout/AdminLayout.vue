@@ -8,40 +8,12 @@
         theme="dark"
         mode="inline"
       >
-        <a-menu-item key="42">
-          <router-link to="/">
-            <DesktopOutlined />
-            <span>Option 2</span>
-          </router-link>
-        </a-menu-item>
         <a-menu-item key="43">
           <router-link to="/asdasd">
             <InboxOutlined />
             <span>Option 3</span>
           </router-link>
         </a-menu-item>
-        <a-sub-menu key="sub1">
-          <template #icon>
-            <MailOutlined />
-          </template>
-          <template #title>Navigation One</template>
-          <a-menu-item key="5">Option 5</a-menu-item>
-          <a-menu-item key="6">Option 6</a-menu-item>
-          <a-menu-item key="7">Option 7</a-menu-item>
-          <a-menu-item key="8">Option 8</a-menu-item>
-        </a-sub-menu>
-        <a-sub-menu key="sub2">
-          <template #icon>
-            <AppstoreOutlined />
-          </template>
-          <template #title>Navigation Two</template>
-          <a-menu-item key="9">Option 9</a-menu-item>
-          <a-menu-item key="10">Option 10</a-menu-item>
-          <a-sub-menu key="sub3" title="Submenu">
-            <a-menu-item key="11">Option 11</a-menu-item>
-            <a-menu-item key="12">Option 12</a-menu-item>
-          </a-sub-menu>
-        </a-sub-menu>
         <AdminSiderMenu :menus="siderMenu" />
       </a-menu>
     </a-layout-sider>
@@ -83,10 +55,7 @@ import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
   //
-  DesktopOutlined,
   InboxOutlined,
-  MailOutlined,
-  AppstoreOutlined,
 } from "@ant-design/icons-vue";
 import AdminSiderMenu from "@/components/ui/admin-sider/AdminSiderMenu.vue";
 import AdminHeaderNotification from "@/components/ui/admin-header/AdminHeaderNotification.vue";
@@ -99,10 +68,7 @@ export default {
     MenuUnfoldOutlined,
     MenuFoldOutlined,
     //
-    DesktopOutlined,
     InboxOutlined,
-    MailOutlined,
-    AppstoreOutlined,
     //
     AdminSiderMenu,
     AdminHeaderNotification,
@@ -112,8 +78,8 @@ export default {
     return {
       siderMenu,
       collapsed: false,
-      selectedKeys: ["5"],
-      openKeys: ["sub1"],
+      selectedKeys: ["child21"],
+      openKeys: ["parent1", "child2"],
     };
   },
   methods: {

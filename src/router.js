@@ -18,7 +18,12 @@ router.beforeEach((to, _from, next) => {
 
   if (needAuth && !isAuth) {
     // console.log('redirect to login')
-    next($_route(constRoute.LOGIN))
+    const redirect = to.fullPath.substring(1)
+    const query = redirect
+      ? { [constRoute.QUERY_PATH_REDIRECT]: redirect }
+      : {}
+
+    next($_route(constRoute.LOGIN, {}, query))
   } else if (!needAuth && isAuth) {
     // console.log('redirect to dashboard')
     next($_route(constRoute.DASHBOARD))

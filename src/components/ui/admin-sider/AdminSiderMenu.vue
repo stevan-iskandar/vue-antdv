@@ -2,7 +2,7 @@
   <template v-for="menu in menus">
     <a-sub-menu v-if="menu.children" :key="menu.key">
       <template v-if="menu.icon" #icon>
-        {{ menu.icon }}
+        <Component :is="menu.icon" />
       </template>
       <template #title>{{ menu.title }}</template>
       <AdminSiderMenu :menus="menu.children" />
@@ -10,7 +10,7 @@
     <a-menu-item v-else :key="menu.key">
       <router-link :to="'/'">
         <template v-if="menu.icon">
-          {{ menu.icon }}
+          <Component :is="menu.icon" />
           <span>{{ menu.title }}</span>
         </template>
         <template v-else>

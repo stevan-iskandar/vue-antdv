@@ -1,5 +1,5 @@
 {
-  "name": "vue-app-01",
+  "name": "vue-antdv",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -12,6 +12,7 @@
     "ant-design-vue": "^3.0.0-alpha.14",
     "axios": "^0.24.0",
     "core-js": "^3.6.5",
+    "source-map": "^0.7.3",
     "vue": "^3.0.0",
     "vue-router": "^4.0.12",
     "vuex": "^4.0.2"

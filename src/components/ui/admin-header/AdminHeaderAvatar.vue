@@ -27,7 +27,6 @@
 
 <script>
 import { UserOutlined, LogoutOutlined } from "@ant-design/icons-vue";
-import { mapActions } from "vuex";
 
 export default {
   name: "AdminHeaderAvatar",
@@ -41,7 +40,9 @@ export default {
     };
   },
   methods: {
-    ...mapActions("auth", ["logout"]),
+    logout() {
+      this.$store.dispatch("auth/logout");
+    },
     logoutModalShow() {
       this.logoutModal = true;
     },

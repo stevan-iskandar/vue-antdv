@@ -14,6 +14,8 @@
 
 <script>
 import { ucWords } from "@/helpers/string";
+import $_route from "@/helpers/route";
+import * as constRoute from "@/constants/constRoute";
 
 export default {
   name: "Export404",
@@ -28,8 +30,14 @@ export default {
   },
   watch: {
     prevPage(newVal) {
-      const { name } = newVal;
-      this.buttonText = name ? `Back to ${ucWords(name)}` : "Back Home";
+      const { name, meta } = newVal;
+
+      if (name && meta.needAuth) {
+        this.buttonText = `Back to ${ucWords(name)}`;
+      } else {
+        this.prevPage.fullPath = $_route(constRoute.DASHBOARD);
+        this.buttonText = "Back Home";
+      }
     },
   },
   beforeRouteEnter(_to, from, next) {

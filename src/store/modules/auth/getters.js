@@ -1,4 +1,7 @@
 export default {
+  all(state) {
+    return state
+  },
   userId(state) {
     return state.userId
   },

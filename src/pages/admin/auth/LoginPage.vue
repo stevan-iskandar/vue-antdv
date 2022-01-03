@@ -18,12 +18,15 @@ export default {
     LoginOutlined,
     BaseAuthCard,
   },
-  data() {
-    return {};
-  },
   methods: {
     login() {
-      this.$store.dispatch("auth/login", { token: "asdasdasd" });
+      const payload = {
+        route: this.$route,
+        username: "qwe-asd-zxc",
+        password: "asd-asd-asd",
+      };
+
+      this.$store.dispatch("auth/login", payload);
     },
   },
 };
