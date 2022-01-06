@@ -2,7 +2,7 @@
   <a-dropdown placement="bottomRight">
     <span>
       Admin
-      <a-avatar>
+      <a-avatar size="large" :style="{ backgroundColor: '#42b883' }">
         <template #icon><UserOutlined /></template>
       </a-avatar>
     </span>
